@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PRESENSI UMBJM</title>
@@ -30,8 +32,8 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
-  
-
+</html>
+  <!-- Template Leaflet CSS -->
   <!-- =======================================================
   * Template Name: Gp - v4.6.0
   * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/

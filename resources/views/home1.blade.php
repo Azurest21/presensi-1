@@ -49,11 +49,27 @@
         </div>
         <div class="col-xl-2 col-md-4">
           <div class="icon-box">
-            <a href="{{ route('filter-data') }}">
-            <i class="ri-database-2-line"></i>
-            <h3>Rekap Presensi</a></h3>
+            <a href="{{ route('haversine') }}">
+            <i class="ri-map-pin-add-line"></i>
+            <h3>Atur Lokasi GPS  </a></h3>
           </div>
         </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <a href="{{ route('filter-data') }}">
+            <i class="ri-database-2-line"></i>
+            <h3>Rekap Presensi  </a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <a href="{{ route('smart') }}">
+            <i class="ri-database-2-line"></i>
+            <h3>SPK</a></h3>
+          </div>
+        </div>
+
+        
         @endif
         @if (auth()->user()->level == "mahasiswa")
       <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
@@ -102,6 +118,7 @@
             <h3>Rekap Presensi</a></h3>
           </div>
         </div>
+
         @endif
       </div>
 

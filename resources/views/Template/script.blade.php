@@ -21,3 +21,8 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <script type="text/javascript" src="{{ asset('inc/TimeCircles.js')}}"></script>
 <link rel="stylesheet" href="{{ asset('inc/TimeCircles.css')}}" />
+
+<!-- Leaflet CSS -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+crossorigin=""></script>

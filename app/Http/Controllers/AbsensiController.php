@@ -51,6 +51,7 @@ class AbsensiController extends Controller
      */
     public function create()
     {
+
     }
 
     /**
@@ -92,9 +93,18 @@ class AbsensiController extends Controller
                     ['tgl','=',$tanggal],
                 ])->first();
                 
-                if ($Absensi){
-                     return redirect('absen-masuk')->with('info', 'Anda sudah melakukan absen sebelumnya.');
-                }else{
+                if ($Absensi) {
+
+
+                        $status_title = 'error';
+                        $title = 'Gagal!';
+                        $message = 'Oopss.. Anda sudah melakukan absen sebelumnya.!';
+
+
+                   //  return redirect('absen-masuk')->with('info', 'Anda sudah melakukan absen sebelumnya.');
+
+
+                } else {
                     $start_time =  date("H:i", strtotime($mulai->start_time));
                     $end_time =  date("H:i", strtotime($mulai->end_time));
                     $waktu_absen = $localtime;
@@ -108,12 +118,26 @@ class AbsensiController extends Controller
                         'tgl' => $tanggal,
                         'jammasuk' => $localtime,
                         'keterangan' => $keterangan,
-                        'file'=>$file
+                        'file'=>$fileName
                     ]);
 
-                      return redirect('absen-masuk')->with('success', 'Data Absen Berhasil Tersimpan');
+                    //  return redirect('absen-masuk')->with('success', 'Data Absen Berhasil Tersimpan');
+
+
+                        $status_title = 'success';
+                        $title = 'Berhasil!';
+                        $message = 'Data Absen Berhasil Tersimpan!';
+
+
                   } else if($waktu_absen < $start_time) {
-                    return redirect('absen-masuk')->with('info', 'Pertemuan Belum Dimulai!');
+
+
+
+                        $status_title = 'error';
+                        $title = 'Gagal!';
+                        $message = 'Oopss.. Pertemuan Belum Dimulai!';
+
+                   // return redirect('absen-masuk')->with('info', 'Pertemuan Belum Dimulai!');
                   }else if($waktu_absen > $end_time) {
                     // Absensi::create([
                     //     'user_id' => auth()->user()->id,
@@ -123,13 +147,26 @@ class AbsensiController extends Controller
                     //     'tgl' => $tanggal,
                     //     'jammasuk' => $localtime,
                     // ]);
-                    return redirect('absen-masuk')->with('info', 'Anda terlambat!');
+
+                    $status_title = 'error';
+                        $title = 'Gagal!';
+                        $message = 'Oopss.. Anda terlambat!';
+                   //return redirect('absen-masuk')->with('info', 'Anda terlambat!');
                   }
                 }
 
         } else {
-             return redirect('absen-masuk')->with('info', 'Pertemuan belum dimulai oleh dosen / tidak ditemukan.');
+             $status_title = 'error';
+                        $title = 'Gagal!';
+                        $message = 'Pertemuan belum dimulai oleh dosen / tidak ditemukan.';
+             //return redirect('absen-masuk')->with('info', 'Pertemuan belum dimulai oleh dosen / tidak ditemukan.');
         }
+
+          echo json_encode(array(
+                        'title' => $title,
+                        'status' => $status_title,
+                        'message' => $message
+                    ));
       
          
 
@@ -191,7 +228,7 @@ class AbsensiController extends Controller
                         'tgl' => $tanggal,
                         'jammasuk' => $localtime,
                         'keterangan' => $keterangan,
-                        'file'=>$file
+                        'file'=>$fileName
                     ]);
 
                       return redirect('ijin')->with('success', 'Data Absen Berhasil Tersimpan');
@@ -232,8 +269,8 @@ class AbsensiController extends Controller
             $datamatkul = Matkul::all();
         }
         else{
-            $dosen = Auth()->user()->id;
-        $datamatkul = Matkul::where("user_id","=",$dosen)->get();
+            $dosen = Auth()->user()->nim;
+        $datamatkul = Matkul::where("dosen_nidn","=",$dosen)->get();
         }
         // $datamatkul = Matkul::all();
         $pertemuan_id = pertemuan::all();

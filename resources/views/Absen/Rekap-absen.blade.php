@@ -56,19 +56,18 @@
                                 </a>
                             </div>
                             <div class="form-group row ">
-                                <table border="2">
-                                    <tr class="container fluid">
-                                        <th>NIM</th>
-                                        <th>Nama</th>
-                                        <th>Mata Kuliah</th>
-                                        <th>Nama Dosen</th>
-                                        <th>Pertemuan</th>
-                                        <th>Tanggal</th>
-                                        <th>Masuk</th>
-                                        <th>Keterangan</th>
+                                <table class="table table-bordered" >
+                                    <tr>
+                                        <td><b>NIM</b></td>
+                                        <td><b>Nama</b></td>
+                                        <td><b>Mata Kuliah</b></td>
+                                        <td><b>Nama Dosen</b></td>
+                                        <td><b>Pertemuan</b></th>
+                                        <td><b>Tanggal</b></th>
+                                        <td><b>Masuk</b></td>
+                                        <td><b>Keterangan</b></td>
                                     </tr>
                                     @foreach ($Absensi as $item)
-                                    
                                     <tr>
                                         <td>{{ $item->user->nim }}</td>
                                         <td>{{ $item->user->nama }}</td>
@@ -77,15 +76,30 @@
                                         <td>{{ $item->pertemuan->pertemuan }}</td>
                                         <td>{{ $item->tgl }}</td>
                                         <td>{{ $item->jammasuk }}</td>
-                                        <td>@if($item->keterangan==0)
+                                        <td>
+
+                                            @if($item->keterangan==0)
                                             Pending
                                             @elseif($item->keterangan==1)
-                                            Hadir
+                                            HADIR 
                                             @elseif($item->keterangan==2)
-                                            Tidak Hadir
+                                            SAKIT DENGAN SURAT DOKTER
                                             @elseif($item->keterangan==3)
-                                            Ijin
+                                            SAKIT TANPA SURAT DOKTER
+                                            @elseif($item->keterangan==4)
+                                            SAKIT TANPA KETERANGAN
+                                            @elseif($item->keterangan==5)
+                                            IJIN DENGAN SURAT DISPEN
+                                            @elseif($item->keterangan==6)
+                                            IJIN DENGAN FOTO KEGIATAN
+                                            @elseif($item->keterangan==7)
+                                            IJIN TANPA KETERANGAN
+                                            @elseif($item->keterangan==8)
+                                            ALFA
                                             @endif
+
+
+
                                         </td>
                                     </tr>
                                     @endforeach

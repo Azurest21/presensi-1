@@ -38,7 +38,7 @@ class DosenController extends Controller
     {
         //dd($request->all());
         $user = new User();
-        $user->nim = "0";
+        $user->nim = $request->nidn;
         $user->nama = $request->namadosen;
         $user->email = $request->email;
         $user->level = "dosen";

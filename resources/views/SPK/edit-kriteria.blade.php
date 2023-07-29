@@ -26,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section id="hero" class="d-flex align-items-center justify-content-center">
       <div class="card" data-aos="fade-up">
-        <form action="{{ url('update-dosen',$dosen->nidn) }}" method="POST">
+        <form action="{{ url('update-kriteria',$Kriteria->id) }}" method="POST">
           {{ csrf_field() }}
           <div class="card-body row">
             <div class="col-5 text-center d-flex align-items-center justify-content-center">
@@ -36,16 +36,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="col-7 align-items-center justify-content-center">
                 <div class="form-group">
-                  <label for="matkul">NAMA DOSEN</label>
-                  <input type="text" id="namadosen" name="namadosen" class="form-control" placeholder="Nama Dosen">
-                </div>
-                <div class="form-group">
-                    <label for="sks">NIP</label>
-                    <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP">
-                </div>
-                <div class="form-group">
-                  <label for="sks">NIDN</label>
-                  <input type="text" id="nidn" name="nidn" class="form-control" placeholder="NIDN">
+                    <label for="kriteria">Kriteria</label>
+                    <input type="text" id="kriteria" name="kriteria" class="form-control" placeholder="Masukan Kriteria">
                 </div>
               <div>
                 <button type="submit" class="btn btn-primary">Ubah Data</button>

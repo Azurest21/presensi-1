@@ -28,9 +28,9 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h3>DOSEN INFORMATIKA</h3>
+                  <h3>KRITERIA SMART</h3>
                   <div class="card-tools">
-                      <a href="{{ route('create-dosen') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+                      <a href="{{ route('tambah-kriteria') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
                       <div class="input-group input-group-sm" style="width: 720px;">
                     </div>
                   </div>
@@ -42,16 +42,14 @@
                       <thead>
       
                       </thead>
-                      @foreach ($Dosen as $item )
+                      @foreach ($Kriteria as $item )
                         <tbody>
-                          <td>{{ $item->namadosen }}
+                          <td>{{ $item->kriteria }}
       
                             <div>
-                              <a href="{{ url('edit-dosen',$item->nidn) }}"><i class="ri-edit-box-line"></i></a>
+                              {{-- <a href="{{ url('edit-kriteria',$item->id) }}"><i class="ri-edit-box-line"></i></a> --}}
       
-                              <a href="{{ url('delete-dosen',$item->nidn) }}"onclick="return confirm('Are you sure you want to delete this item?');"><i class="ri-delete-bin-line" style="color: red"></i></a>
-      
-                              <a href="{{ url('detail-dosen',$item->nidn) }}"><i class="ri-more-fill" style="color: black"></i></a>
+                              <a href="{{ url('hapus-kriteria',$item->id) }}"onclick="return confirm('Are you sure you want to delete this item?');"><i class="ri-delete-bin-line" style="color: red"></i></a>
                             </div>
                           </td>
       

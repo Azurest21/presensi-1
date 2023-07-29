@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Data Mata Kuliah</title>
+    <title>Data Surat</title>
     @include('Template.head1')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -11,7 +11,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="{{ route('home') }}">Presensi Mahasiswa<span>.</span></a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="{{ route('home') }}">Surat<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       @include('template.navbar1')
@@ -28,9 +28,9 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h3>DOSEN INFORMATIKA</h3>
+                  <h3>Surat</h3>
                   <div class="card-tools">
-                      <a href="{{ route('create-dosen') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+                      <a href="{{ route('tambah-surat') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
                       <div class="input-group input-group-sm" style="width: 720px;">
                     </div>
                   </div>
@@ -39,26 +39,24 @@
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0" style="height: 360px;">
                     <table class="table table-bordered">
-                      <thead>
+                      <tr class=>
+                        <th>Nama Surat</th>
+                        <th>Min Nilai</th>
+                        <th>Maks Nilai</th>
+                        <th>Tindakan</th>
+                      </tr>  
+                      @foreach($surats as $item )
+                      <tr>
+                          <td>{{$item->nama_surat}}</td>
+                          <td>{{$item->min_nilai}}</td>
+                          <td>{{$item->maks_nilai}}</td>
+                            <td>
+                              <a href="{{ url('edit-surat',$item->id) }}"><i class="ri-edit-box-line"></i></a>
       
-                      </thead>
-                      @foreach ($Dosen as $item )
-                        <tbody>
-                          <td>{{ $item->namadosen }}
-      
-                            <div>
-                              <a href="{{ url('edit-dosen',$item->nidn) }}"><i class="ri-edit-box-line"></i></a>
-      
-                              <a href="{{ url('delete-dosen',$item->nidn) }}"onclick="return confirm('Are you sure you want to delete this item?');"><i class="ri-delete-bin-line" style="color: red"></i></a>
-      
-                              <a href="{{ url('detail-dosen',$item->nidn) }}"><i class="ri-more-fill" style="color: black"></i></a>
-                            </div>
-                          </td>
-      
-      
-                        </tbody>
+                              <a href="{{ url('hapus-surat',$item->id) }}"onclick="return confirm('Are you sure you want to delete this item?');"><i class="ri-delete-bin-line" style="color: red"></i></a>
+                            </td>
+                      </tr>
                       @endforeach
-      
                     </table>
                 </div>  
       

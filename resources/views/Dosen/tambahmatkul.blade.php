@@ -26,30 +26,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section id="hero" class="d-flex align-items-center justify-content-center">
       <div class="card" data-aos="fade-up">
-        <form action="{{ url('update-dosen',$dosen->nidn) }}" method="POST">
+        <form action="{{ route('simpan-matkul') }}" method="POST">
           {{ csrf_field() }}
           <div class="card-body row">
             <div class="col-5 text-center d-flex align-items-center justify-content-center">
-                <div class="">
-                  <p class="lead mb-8"><strong>EDIT DATA DOSEN</strong></p>
-                </div>
+              <div class="">
+                <p class="lead mb-8"><strong>INPUT MATA KULIAH</strong></p>
               </div>
-              <div class="col-7 align-items-center justify-content-center">
-                <div class="form-group">
-                  <label for="matkul">NAMA DOSEN</label>
-                  <input type="text" id="namadosen" name="namadosen" class="form-control" placeholder="Nama Dosen">
-                </div>
-                <div class="form-group">
-                    <label for="sks">NIP</label>
-                    <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP">
-                </div>
-                <div class="form-group">
-                  <label for="sks">NIDN</label>
-                  <input type="text" id="nidn" name="nidn" class="form-control" placeholder="NIDN">
-                </div>
-              <div>
-                <button type="submit" class="btn btn-primary">Ubah Data</button>
             </div>
+            <div class="col-7 align-items-center justify-content-center">
+              <label for="matkul_id">Tahun Ajar</label>
+                 <select class="form-control"  id="tahun_id" name="tahun_id" placeholder="Tahun Ajar">
+                 <option hidden>Pilih Tahun Ajar</option>
+                 <option disabled value> Pilih Keterangan</option>
+                 @foreach($tahun as $item)
+                 <option value="{{ $item->id }}">{{ $item->tahun }} ({{ $item->keterangan}})</option>
+                 @endforeach
+                 </select>
+              <div class="form-group">
+                <label for="matkul">MATA KULIAH</label>
+                <input type="text" id="matkul" name="matkul" class="form-control" placeholder="Mata Kuliah">
+              </div>
+              <div class="form-group">
+                  <label for="sks">JUMLAH SKS</label>
+                  <input type="text" id="sks" name="sks" class="form-control" placeholder="Jumlah SKS">
+              </div>
+              <div>
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                  <a class="btn btn-danger" href="#" role="button"><i class="fas fa-undo"></i> Batal</a>
+              </div>
             </div>
           </div>
         </form>

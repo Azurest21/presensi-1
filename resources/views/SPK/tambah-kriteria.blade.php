@@ -26,30 +26,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section id="hero" class="d-flex align-items-center justify-content-center">
       <div class="card" data-aos="fade-up">
-        <form action="{{ url('update-dosen',$dosen->nidn) }}" method="POST">
+        <form action="{{ route('simpan-kriteria') }}" method="POST">
           {{ csrf_field() }}
           <div class="card-body row">
             <div class="col-5 text-center d-flex align-items-center justify-content-center">
-                <div class="">
-                  <p class="lead mb-8"><strong>EDIT DATA DOSEN</strong></p>
-                </div>
+              <div class="">
+                <p class="lead mb-8"><strong>INPUT KRITERIA</strong></p>
               </div>
-              <div class="col-7 align-items-center justify-content-center">
-                <div class="form-group">
-                  <label for="matkul">NAMA DOSEN</label>
-                  <input type="text" id="namadosen" name="namadosen" class="form-control" placeholder="Nama Dosen">
-                </div>
-                <div class="form-group">
-                    <label for="sks">NIP</label>
-                    <input type="text" id="nip" name="nip" class="form-control" placeholder="NIP">
-                </div>
-                <div class="form-group">
-                  <label for="sks">NIDN</label>
-                  <input type="text" id="nidn" name="nidn" class="form-control" placeholder="NIDN">
-                </div>
-              <div>
-                <button type="submit" class="btn btn-primary">Ubah Data</button>
             </div>
+            <div class="col-7 align-items-center justify-content-center">
+              <div class="form-group">
+                <label for="kriteria">Kriteria</label>
+                <input type="text" id="kriteria" name="kriteria" class="form-control" placeholder="Masukan Kriteria">
+              </div>
+              <div>
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                  <a class="btn btn-danger" href="#" role="button"><i class="fas fa-undo"></i> Batal</a>
+              </div>
             </div>
           </div>
         </form>

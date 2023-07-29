@@ -33,8 +33,8 @@ class MulaiController extends Controller
 
     public function create()
     {
-        $dosen = Auth()->user()->id;
-        $matkuls = Matkul::where("user_id","=",$dosen)->get();
+        $dosen = Auth()->user()->nim;
+        $matkuls = Matkul::where("dosen_nidn","=",$dosen)->get();
         // dd($matkuls);
         $pertemuans = Pertemuan::all();
         return view('Dosen.mulai.create',compact('matkuls', 'pertemuans'));
@@ -88,7 +88,8 @@ class MulaiController extends Controller
     public function edit($id)
     {
         $data = Mulai::findorfail($id);
-        $matkuls = Matkul::all();
+        $dosen = Auth()->user()->nim;
+        $matkuls = Matkul::where("dosen_nidn","=",$dosen)->get();
         $pertemuans = Pertemuan::all();
         return view('Dosen.mulai.edit',compact('matkuls', 'pertemuans', 'data'));
     }

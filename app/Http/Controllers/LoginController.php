@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -10,6 +9,10 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function halamanlogin(){
+        
+        if(Auth::check()){
+            return redirect('/home');
+        }
         return view ('Login.Login-apk');
     }
 
